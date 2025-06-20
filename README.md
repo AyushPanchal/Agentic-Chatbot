@@ -1,1 +1,1 @@
-### End-to-end AgenticAIChatBot
+### End-to-end Agentic AI ChatBot
