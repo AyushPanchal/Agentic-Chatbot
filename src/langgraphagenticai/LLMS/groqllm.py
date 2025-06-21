@@ -3,10 +3,10 @@ import streamlit as st
 from langchain_groq import ChatGroq
 
 class GroqLLM:
-    def __init__(self, user_controls):
-        self.user_controls = user_controls
-        self.groq_api_key = user_controls.get("GROQ_API_KEY", "")
-        self.selected_groq_model = user_controls.get("selected_groq_model", "groq/groq-llama-3.1-70b-chat")
+    def __init__(self, user_controls_input):
+        self.user_controls = user_controls_input
+        self.groq_api_key = user_controls_input.get("GROQ_API_KEY", "")
+        self.selected_groq_model = user_controls_input.get("selected_groq_model", "groq/groq-llama-3.1-70b-chat")
         self.groq_client = None
 
     def get_llm_model(self):
