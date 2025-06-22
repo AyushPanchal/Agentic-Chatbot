@@ -11,7 +11,7 @@ class AINewsNode:
         self.state = {}
 
     def fetch_news(self, state: dict) -> dict:
-        frequency = state["message"][0].content_lower()
+        frequency = state["messages"][0].content.lower()
         self.state["frequency"] = frequency
         time_range_map = {
             "daily": "d",
@@ -64,3 +64,12 @@ class AINewsNode:
         self.state['summary'] = state['summary']
         return self.state
 
+    def save_result(self, state):
+        frequency = self.state['frequency']
+        summary = self.state['summary']
+        filename = f"./AINews/{frequency}_summary.md"
+        with open(filename, 'w') as f:
+            f.write(f"# {frequency.capitalize()} AI News Summary\n\n")
+            f.write(summary)
+        self.state['filename'] = filename
+        return self.state
